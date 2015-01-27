@@ -1,6 +1,7 @@
-#Project builder v2.0 is here to help make your project set up a little quicker. There are two scripts written: the first will create your Postgres databases and tables (aptly titled the postgres_tool.rb), while project_make_v2.rb builds your directory structure, adds files, and will auto-populate base code in the Gemfile, Rakefile, app.rb, layout.erb, README.md and database.yml. Project make v2.0 was built off the solid bones of Dan's project builder by Alister. 
+#Project builder v2.0 is here to help make your project set up a little quicker. 
 
-Version 2 is now updated to auto-populate base language in the Gemfile, Rakefile, app.rb, layout.erb, and database.yml.
+There are two scripts written: the first will create your Postgres databases and tables (aptly titled the postgres_tool.rb), while project_make_v2.rb builds your directory structure, adds files, and will auto-populate base code in the Gemfile, Rakefile, app.rb, layout.erb, README.md and database.yml. Project make v2.0 was built off the solid bones of Dan's project builder by Alister. 
+
 Should work on pretty much anything but windows.
 
 #Maintainers:
