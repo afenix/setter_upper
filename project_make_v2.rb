@@ -1,11 +1,15 @@
 #Project builder script v 2.0 built off the solid bones of Dan's project builder by Alister.
-#Version 2 is now updated to auto-populate base language in the Gemfile, Rakefile, app.rb, layout.erb, and database.yml.
+#Version 2 is now updated to auto-populate base language in the Gemfile, Rakefile, app.rb, layout.erb, README.md and the database.yml.
 #No more typing gem(bla bla) or require(bla bla)...woop woop!
+#
 #please use responsibly :D
 #no cussing
-#2015 danwright.co & Fenix Design
-#
-project_name = "cool_new_project_name"
+#2015 danwright.co & fenix design
+
+#############################################################################################################################################
+
+#Enter the project name here:
+project_name = "cool_project_name_here"
 
 puts("Building directory structure...")
 
@@ -19,7 +23,7 @@ system "mkdir", "-p", (project_name + "/public/css")
 system "mkdir", "-p", (project_name + "/public/img")
 
 
-puts("Okay, creating files now...")
+puts("Okay, creating and auto-populating new files now...Booyah")
 
 
 Dir.chdir project_name
@@ -59,8 +63,48 @@ open('app.rb', 'w') { |f|
 }
 
 
+system `touch README.md`
+open('README.md', 'w') { |f|
+  f << "## Synopsis\n"
+  f << "At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)\n"
+  f << "## Code Example\n"
+  f << "Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.\n"
+  f << "## Motivation\n"
+  f << "A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.\n"
+  f << "## Installation\n"
+  f << "Provide code examples and explanations of how to get the project.\n"
+  f << "## API Reference\n"
+  f << "Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.\n"
+  f << "## Tests\n"
+  f << "Describe and show how to run the tests with code examples.\n"
+  f << "## Contributors.\n"
+  f << "Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.\n"
+  f << "## License.\n"
+  f << "A short snippet describing the license (MIT, Apache, etc.)."
+}
+
+
 Dir.chdir "spec"
 system `touch spec_helper.rb method_name_spec.rb`
+open('spec_helper.rb', 'w') { |f|
+  f << "require('rspec')\n"
+  f << "require('pg')\n"
+  f << "require('sinatra/activerecord')\n"
+  f << "require('task')\n"
+  f << "\n"
+  f << "RSpec.configure do |config|\n"
+  f << "  config.after(:each) do\n"
+  f << "    #MethodName.all().each() do |method_singular|\n"
+  f << "      #MethodName.destroy()\n"
+  f << "    end\n"
+  f << "  end\n"
+  f << "end\n"
+}
+
+
+open('method_name_spec.rb', 'w') { |f|
+  f << "require('spec_helper')\n"
+}
 
 
 Dir.chdir "../config"
